@@ -21,7 +21,7 @@ if __name__ == "__main__":
     '''
     
     # load the data
-    filePath = 'data\univariateData.dat'
+    filePath = 'data\multivariateData.dat'
     file = open(filePath,'r')
     allData = np.loadtxt(file, delimiter=',')
 

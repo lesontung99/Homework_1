@@ -80,12 +80,12 @@ def visualizeObjective(lr_model,t1_vals,t2_vals, X, y):
 
     # Compute the objective function over the space
     Z = np.zeros(T1.shape)
-    for i in xrange(n):
-        for j in xrange(p):
+    for i in range(n):
+        for j in range(p):
             Z[i,j] = lr_model.computeCost(X,y, np.matrix([T1[i,j],T2[i,j]]).T )
 
     fig = plt.figure()
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(projection='3d')
     surf = ax.plot_surface(T1, T2, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
         linewidth=0)
 
@@ -93,12 +93,12 @@ def visualizeObjective(lr_model,t1_vals,t2_vals, X, y):
     ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 
     fig.colorbar(surf, shrink=0.5, aspect=5)
-    plt.hold(True)
+    #plt.hold(True)
 
     # If the history of the objective function plot the path taken by the gradient descent
     if lr_model.JHist !=None:
         
-        for ii in xrange(len(lr_model.JHist)-1): 
+        for ii in range(len(lr_model.JHist)-1): 
             t1 = lr_model.JHist[ii][1].tolist()
             t2 = lr_model.JHist[ii+1][1].tolist()
 
@@ -127,7 +127,7 @@ def visualizeObjective(lr_model,t1_vals,t2_vals, X, y):
     plt.xlabel("Theta0")
     plt.ylabel("Theta1")
 
-    plt.hold(True)
+    #plt.hold(True)
     plt.plot(lr_model.theta[0][0],lr_model.theta[1][0], 'rx')
     plt.show()
 
@@ -139,7 +139,7 @@ if __name__ == "__main__":
     '''
     
     # load the data
-    filePath = "data/univariateData.dat"
+    filePath = 'data/univariateData.dat'
     file = open(filePath,'r')
     allData = np.loadtxt(file, delimiter=',')
 
